@@ -1,27 +1,101 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Custom Colors */
+  --color-neon: oklch(0.88 0.15 195);
+  --color-neon-dim: oklch(0.75 0.12 200);
+  --color-navy-950: #0a0e14;
+  --color-navy-900: #1b2430;
+  --color-navy-800: #2a3645;
+
+  /* Custom Font Families */
+  --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-cursive: Pacifico, cursive;
+
+  /* Custom Animations */
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
 
 @layer base {
   body {
-    @apply bg-navy-950 text-slate-100;
+    background-color: #0a0e14;
+    color: #f0f4f8;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: #0A0E14; 
+    background: #0a0e14;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: #1B2430; 
+    background: #1b2430;
     border-radius: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #2A3645; 
+    background: #2a3645;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(10, 14, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240, 244, 248, 0.05);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
   }
 }
